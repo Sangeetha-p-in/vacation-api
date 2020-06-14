@@ -18,7 +18,7 @@ app.disable("x-powered-by");
 
 // Add headers
 app.use(function(req, res, next) {
-   var allowedOrigins = ['https://10.10.10.89:4401','http://10.10.10.89:4200', 'http://10.10.10.254', 'http://10.10.10.26:4200','http://10.10.10.70:4200', 'http://demo.booking.s3-website.us-east-2.amazonaws.com/','http://demo.newagesme.com/7010','http://10.10.10.70:3000/users','https://newagesme.com:7010/users','https://newagesme.com/7011/users','https://newagesme.com', 'https://18.189.29.150:5881/', 'http://18.189.29.150:5880/', 'https://18.189.29.150:5881/', 'http://18.189.29.150:5880/' , 'https://18.189.29.150:4401/'];
+   var allowedOrigins = ['https://10.10.10.89:4401','http://10.10.10.89:4200', 'http://10.10.10.254', 'http://10.10.10.26:4200','http://10.10.10.70:4200', 'http://demo.booking.s3-website.us-east-2.amazonaws.com/','http://demo.newagesme.com/7010','http://10.10.10.70:3000/users','https://newagesme.com:7010/users','https://newagesme.com/7011/users','https://newagesme.com', 'https://18.223.169.251:5881/', 'http://18.223.169.251:5880/', 'https://18.223.169.251:5881/', 'http://18.223.169.251:5880/' , 'https://18.223.169.251:4401/'];
   var origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
   // Website you wish to allow to connect
