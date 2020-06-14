@@ -26,20 +26,20 @@ var fs = require("fs"),
             <p><strong>VacationMe Team</strong></p>
             </body></html>`,
     //profile_path: 'http://newagesme.com:7007/uploads/profile_images/',
-    profile_path: "http://rajesh-apex:7000/uploads/profile_images/",
+    profile_path: "http://18.216.168.144:7000/uploads/profile_images/",
 
     //team_profile_path: 'http://newagesme.com:7007/uploads/bid/',
-    team_profile_path: "http://rajesh-apex:7000/uploads/team_images/",
+    team_profile_path: "http://18.216.168.144:7000/uploads/team_images/",
 
     upload_url: "public/uploads/",
     // email_verification: 'http://newagesme.com:7007/verification/email/',
     // email_verification: 'http://10.10.10.254/squadsports/verification/email/',
 
-    // userPlaceholder : 'http://rajesh-apex:5880/uploads/user_image_placeholder.png',
-    // groupPlaceholder : 'http://rajesh-apex:5880/uploads/placeholder-group.jpg',
+    // userPlaceholder : 'http://18.216.168.144:5880/uploads/user_image_placeholder.png',
+    // groupPlaceholder : 'http://18.216.168.144:5880/uploads/placeholder-group.jpg',
 
-    userPlaceholder : 'http://rajesh-apex:5880/uploads/user_image_placeholder.png',
-    groupPlaceholder : 'http://rajesh-apex:5880/uploads/placeholder-group.jpg',
+    userPlaceholder : 'http://18.216.168.144:5880/uploads/user_image_placeholder.png',
+    groupPlaceholder : 'http://18.216.168.144:5880/uploads/placeholder-group.jpg',
 
     min_duration: 0,
 
