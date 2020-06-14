@@ -1,0 +1,25 @@
+	<script src="/javascripts/jquery-2.1.3.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		$(function(){
+			var $frmSendMessage = $("#frmSendMessage");
+			var $message = $("#message");
+			var $receiveMessage = $("#receiveMessage");
+			socket = io.connect();
+			
+			socket.on("new chatmessage", function(data){
+				$receiveMessage.append('<p class="message">' + data + '</p>');
+			})
+			
+			$frmSendMessage.on("submit", function(evt){
+				evt.preventDefault();
+				var message = $message.val();
+				$message.val('');
+				socket.emit("send chatmessage", message);					
+			})
+			
+		});
+	</script>
+	</body>
+</html>

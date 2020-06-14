@@ -1,0 +1,76 @@
+module.exports = function (http) {
+
+  var USERS = {};
+
+  var userCount = 0;
+
+  var io = require('socket.io')(http);
+
+    io.on('connection', function (socket) {
+    socket.emit('connected');
+    console.log('socket connected.');
+    userCount++;
+    console.log(userCount + ' members in socket');
+    socket.on('disconnect', function () {
+      console.log('socket disconnected.');
+      userCount--;
+      console.log(userCount + ' members in socket');
+      if (socket.uniqueId) {
+        if (USERS[socket.uniqueId] && typeof (USERS[socket.uniqueId]) != 'undefined') {
+          USERS[socket.uniqueId].active = false;
+          setTimeout(() => {
+            if (typeof (USERS[socket.uniqueId]) != 'undefined' && USERS[socket.uniqueId].active == false) {
+              delete USERS[socket.uniqueId];
+            }
+          }, 5000);
+        }
+      }
+    });
+    
+    // add new bid group
+    socket.on('add user', function (data) {
+      var groupId = data.bid_id;
+      var member = data.user_id;
+      if (typeof (member) != 'undefined') {
+        socket.join(groupId);
+      }
+    })
+
+    // send bid data
+    socket.on('send bid', function (data) {
+      console.log(data);
+      var groupId = data.bid_id;
+      if (typeof (groupId) != 'undefined') {
+       io.broadcast.to(groupId).emit('top bid', {
+				bid: {
+				bid_id: groupId,
+				bid_price: data.price,
+				bid_by: data.full_name,
+				profile_image: data.image
+				},
+				message: 'Top Bid'
+				});
+      }
+    })
+
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,87 @@
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+require('dotenv').config();
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+// var categories = require('./routes/categories');
+var posts = require('./routes/posts');
+
+var auth = require('./routes/admin/auth');
+var userManagement = require('./routes/admin/userManagement');
+var industries = require('./routes/admin/industries');
+
+var app = express();
+
+// Add headers
+app.use(function (req, res, next) {
+  
+    var allowedOrigins = ['http://10.10.10.89:4200', 'http://10.10.10.254', 'http://10.10.10.26:4200', 'http://localhost:4200','http://10.10.10.86:4200','http://10.10.10.86:8084','http://demo.newagesme.com:5060'];
+  
+    var origin = req.headers.origin;
+    if (allowedOrigins.indexOf(origin) > -1) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,cache-control,content-type,accept,authorization,x-access-token,x-refresh-token,AuthToken,RefreshToken,authtoken,refreshtoken,Authentication,If-None-Match');
+
+    // Response headers you wish to allow
+    res.setHeader('Access-Control-Expose-Headers', 'Authentication,AuthToken,RefreshToken');
+    res.setHeader('Access-Control-Expose-Headers', 'Authentication,authtoken,refreshtoken');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', index);
+app.use('/users', users);
+app.use('/categories', categories);
+app.use('/posts', posts);
+
+app.use('/admin/auth', auth);
+app.use('/admin/usermanagement', userManagement);
+app.use('/admin/industries', industries);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;

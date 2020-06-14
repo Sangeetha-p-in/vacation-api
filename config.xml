@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences><adminEmail>qanewagesmb@gmail.com</adminEmail><dateTimeFormat>%m/%d/%Y %h:%i %p</dateTimeFormat><fromName>Vacation Me</fromName><fromEmail>qanewagesmb@gmail.com</fromEmail><smtpHost>smtp.gmail.com</smtpHost><smtpPort>465</smtpPort><smtpUser>qanewagesmb@gmail.com</smtpUser><smtpPass>Newagesm8</smtpPass><dateFormat>%m/%d/%Y</dateFormat><codeExpiryDelay>300</codeExpiryDelay><notificationRadius>40</notificationRadius><postExpiry>7</postExpiry></preferences>
