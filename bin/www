@@ -34,7 +34,7 @@ require("./sockets/base")(io);
  */
 
 // server.listen(port, "10.10.10.86");
-server.listen(port, "ec2-18-189-29-150.us-east-2.compute.amazonaws.com");
+server.listen(port, "18.223.142.157");
 // httpsServer.listen(process.env.HTTPS_PORT || "7011");
 server.on("error", onError);
 server.on("listening", onListening);
@@ -54,7 +54,7 @@ require("./sockets/base")(io_https);
  * Listen on provided port, on all network interfaces.
  */
 
-httpsServer.listen(portHttp, "ec2-18-189-29-150.us-east-2.compute.amazonaws.com");
+httpsServer.listen(portHttp, "18.223.142.157");
 // httpsServer.listen(portHttp, "10.10.10.86");
 httpsServer.on("error", onErrorHttps);
 httpsServer.on("listening", onListeningHttps);
