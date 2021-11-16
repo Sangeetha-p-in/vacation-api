@@ -8,7 +8,7 @@
   "dependencies": {
     "apn": "^2.2.0",
     "async": "^2.6.2",
-    "aws-sdk": "^2.267.1",
+    "aws-sdk": "^2.814.0",
     "base64-img": "^1.0.4",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
