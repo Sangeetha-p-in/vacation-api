@@ -40,7 +40,7 @@
     "sequelize": "^5.8.6",
     "serve-favicon": "^2.4.5",
     "shuffle-array": "^1.0.1",
-    "socket.io": "^2.0.4",
+    "socket.io": "^2.5.0",
     "stripe": "^5.10.0",
     "uniqid": "^5.0.3",
     "web-push": "^3.3.3",
